@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galera da Caneca — Entrar</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+<div class="tela-login">
+  <main class="cartao-login">
+    <div class="cartao-login__marca">
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="52" height="52" rx="12" fill="#22303A"/>
+        <path d="M15 16h16v18a3 3 0 0 1-3 3H18a3 3 0 0 1-3-3V16Z" stroke="#C1832F" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M31 21h3a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-3" stroke="#C1832F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17 13c.6 1 1.6 1 2 0 .6-1 1.6-1 2 0" stroke="#F3E0C2" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <h1>Galera da Caneca</h1>
+      <p>Painel de vendas — acesso restrito a funcionários</p>
+    </div>
+
+    <form id="form-login" novalidate>
+      <div class="campo">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="[email protected]" autocomplete="username" required>
+        <span class="mensagem-erro"></span>
+      </div>
+
+      <div class="campo">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" placeholder="••••••••" autocomplete="current-password" required>
+        <span class="mensagem-erro"></span>
+      </div>
+
+      <button type="submit" class="btn btn--primario btn--bloco">Entrar</button>
+    </form>
+
+    <div class="credenciais-demo">
+      <strong>Ambiente de demonstração</strong> (dados de <code>GaleraDaCaneca_database.sql</code>).<br>
+      Clique para preencher automaticamente:<br><br>
+      <button type="button" class="btn btn--secundario btn--pequeno" data-preencher data-email="[email protected]" data-senha="695314">
+        Gerente — <code>[email protected]</code>
+      </button><br><br>
+      <button type="button" class="btn btn--secundario btn--pequeno" data-preencher data-email="[email protected]" data-senha="583920">
+        Vendedor — <code>[email protected]</code>
+      </button>
+    </div>
+  </main>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/utilitarios.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

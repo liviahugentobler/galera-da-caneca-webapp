@@ -1,0 +1,108 @@
+/* ============================================================
+   BASE.CSS — Reset, variáveis de design e tipografia
+   Projeto: Galera da Caneca (sistema de vendas)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root {
+  
+  --cor-fundo: #F2F3EE;         
+  --cor-superficie: #FFFFFF;     
+  --cor-navbar: #22303A;          
+  --cor-navbar-texto: #F2E9DD;
+  --cor-texto: #22303A;
+  --cor-texto-suave: #5B6B70;
+  --cor-borda: #DCDED4;
+
+  --cor-cobre: #C1832F;           
+  --cor-cobre-escuro: #9C6822;
+  --cor-cobre-claro: #F3E0C2;
+
+  --cor-sucesso: #3C6E47;
+  --cor-sucesso-fundo: #E4EFE6;
+  --cor-alerta: #A3401F;
+  --cor-alerta-fundo: #F8E7E0;
+  --cor-info: #2C5F72;
+  --cor-info-fundo: #E2EEF1;
+
+  --fonte-titulo: 'Fraunces', Georgia, serif;
+  --fonte-corpo: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --fonte-dados: 'IBM Plex Mono', 'Courier New', monospace;
+
+  --raio: 8px;
+  --raio-peq: 4px;
+  --sombra: 0 2px 8px rgba(34, 48, 58, 0.08);
+  --sombra-media: 0 6px 20px rgba(34, 48, 58, 0.14);
+
+  --espaco-1: 4px;
+  --espaco-2: 8px;
+  --espaco-3: 16px;
+  --espaco-4: 24px;
+  --espaco-5: 32px;
+  --espaco-6: 48px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fonte-corpo);
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--cor-texto);
+}
+
+h1 { font-size: 1.9rem; }
+h2 { font-size: 1.4rem; }
+h3 { font-size: 1.1rem; }
+
+a {
+  color: var(--cor-cobre-escuro);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+img { max-width: 100%; display: block; }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--cor-cobre);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 var(--espaco-4);
+}
+
+.somente-leitor {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Galera da Caneca — Wireframes</title>
+<style>
+  body{font-family:Arial,Helvetica,sans-serif;background:#eee;margin:0;padding:32px;color:#333}
+  h1{margin-bottom:4px}
+  p.legenda{color:#666;margin-top:0;margin-bottom:32px}
+  .prancha{background:#fff;border:1px solid #ccc;margin-bottom:40px;padding:20px;max-width:900px}
+  .prancha h2{font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:#555;border-bottom:2px solid #333;padding-bottom:8px;margin-bottom:16px}
+  .wf{border:2px solid #333}
+  .wf-header{background:repeating-linear-gradient(45deg,#ddd,#ddd 6px,#eee 6px,#eee 12px);border-bottom:2px solid #333;padding:10px 14px;display:flex;justify-content:space-between;font-size:11px;font-weight:bold}
+  .wf-body{display:flex;min-height:260px}
+  .wf-nav{width:150px;border-right:2px dashed #999;padding:12px;font-size:11px}
+  .wf-nav div{border:1px solid #999;padding:8px;margin-bottom:8px;background:#f5f5f5}
+  .wf-main{flex:1;padding:16px;font-size:11px}
+  .box{border:1px solid #999;background:#f7f7f7;padding:10px;margin-bottom:10px;flex:1}
+  .box-title{font-weight:bold;font-size:11px;margin-bottom:6px;color:#555}
+  .row{display:flex;gap:10px}
+  .row > div{flex:1}
+  .btn{display:inline-block;border:2px solid #333;padding:6px 14px;font-weight:bold;font-size:11px;background:#e2e2e2}
+  .placeholder-linha{height:8px;background:#ccc;margin:6px 0;border-radius:2px}
+  .placeholder-linha.w60{width:60%}
+  .placeholder-linha.w40{width:40%}
+  .tabela-wf{width:100%;border-collapse:collapse;font-size:10px}
+  .tabela-wf th,.tabela-wf td{border:1px solid #bbb;padding:6px}
+  .tabela-wf th{background:#ddd}
+  .campo-wf{margin-bottom:10px}
+  .campo-wf label{display:block;font-size:10px;font-weight:bold;margin-bottom:3px}
+  .campo-wf .input{border:1px solid #999;background:#fff;height:18px}
+</style>
+</head>
+<body>
+<h1>Wireframes — Galera da Caneca (Front-end Web)</h1>
+<p class="legenda">Protótipos de baixa fidelidade das páginas planejadas para a Etapa 8. Cada prancha representa a estrutura de uma página HTML do projeto.</p>
+
+<div class="prancha">
+  <h2>1. Login (index.html)</h2>
+  <div class="wf" style="max-width:360px;margin:0 auto;">
+    <div class="wf-header"><span>GALERA DA CANECA — LOGIN</span></div>
+    <div class="wf-main" style="text-align:center;">
+      <div style="width:50px;height:50px;border:2px solid #333;border-radius:8px;margin:16px auto;"></div>
+      <div class="placeholder-linha w60" style="margin:10px auto;"></div>
+      <div class="campo-wf" style="text-align:left;"><label>E-MAIL</label><div class="input"></div></div>
+      <div class="campo-wf" style="text-align:left;"><label>SENHA</label><div class="input"></div></div>
+      <div class="btn" style="width:100%;box-sizing:border-box;text-align:center;">ENTRAR</div>
+    </div>
+  </div>
+</div>
+
+<div class="prancha">
+  <h2>2. Dashboard (dashboard.html)</h2>
+  <div class="wf">
+    <div class="wf-header"><span>LOGO — GALERA DA CANECA</span><span>NAV: DASHBOARD | VENDAS | PRODUTOS* | FUNCIONÁRIOS*</span><span>USUÁRIO | SAIR</span></div>
+    <div class="wf-body">
+      <div class="wf-main">
+        <div class="row">
+          <div class="box"><div class="box-title">TOTAL VENDIDO</div><div class="placeholder-linha w40"></div></div>
+          <div class="box"><div class="box-title">Nº VENDAS</div><div class="placeholder-linha w40"></div></div>
+          <div class="box"><div class="box-title">UNIDADES</div><div class="placeholder-linha w40"></div></div>
+          <div class="box"><div class="box-title">ESTOQUE BAIXO*</div><div class="placeholder-linha w40"></div></div>
+        </div>
+        <div class="box-title" style="margin-top:6px;">ACESSO RÁPIDO</div>
+        <div class="row">
+          <div class="box">+ Registrar Venda</div>
+          <div class="box">Ver Vendas</div>
+          <div class="box">Catálogo Produtos*</div>
+          <div class="box">Funcionários*</div>
+        </div>
+        <div class="box-title">ÚLTIMAS VENDAS</div>
+        <table class="tabela-wf"><tr><th>Data</th><th>Cliente</th><th>Produto</th><th>Qtd</th><th>Total</th></tr>
+        <tr><td colspan="5">▢▢▢▢▢▢▢▢▢▢▢▢▢▢▢▢▢▢▢▢</td></tr></table>
+      </div>
+    </div>
+  </div>
+  <p class="legenda" style="margin-top:8px;">* itens visíveis apenas para o perfil Gerente</p>
+</div>
+
+<div class="prancha">
+  <h2>3. Lista de Vendas (vendas.html)</h2>
+  <div class="wf">
+    <div class="wf-header"><span>GALERA DA CANECA</span><span>NAV</span><span>USUÁRIO</span></div>
+    <div class="wf-main">
+      <div class="row"><div class="placeholder-linha w40"></div><div class="btn" style="width:110px;">+ NOVA VENDA</div></div>
+      <div class="row" style="margin:10px 0;"><div class="input" style="border:1px solid #999;height:20px;flex:2;"></div><div class="input" style="border:1px solid #999;height:20px;flex:1;"></div></div>
+      <table class="tabela-wf">
+        <tr><th>Data</th><th>Cliente</th><th>Produto</th><th>Qtd</th><th>Desc.</th><th>Total</th><th>Vendedor</th><th>Ações</th></tr>
+        <tr><td>▢</td><td>▢▢▢</td><td>▢▢▢</td><td>▢</td><td>▢</td><td>▢▢</td><td>▢▢▢</td><td>Excluir</td></tr>
+        <tr><td>▢</td><td>▢▢▢</td><td>▢▢▢</td><td>▢</td><td>▢</td><td>▢▢</td><td>▢▢▢</td><td>Excluir</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="prancha">
+  <h2>4. Nova Venda (venda-form.html)</h2>
+  <div class="wf">
+    <div class="wf-header"><span>GALERA DA CANECA</span><span>NAV</span><span>USUÁRIO</span></div>
+    <div class="wf-main">
+      <div class="row">
+        <div style="flex:1.4;">
+          <div class="box-title">DADOS DA VENDA</div>
+          <div class="campo-wf"><label>CLIENTE</label><div class="input"></div></div>
+          <div class="row">
+            <div class="campo-wf"><label>PRODUTO (SELECT)</label><div class="input"></div></div>
+            <div class="campo-wf"><label>QUANTIDADE</label><div class="input"></div></div>
+          </div>
+          <div class="btn">SALVAR VENDA</div>
+        </div>
+        <div style="flex:1;">
+          <div class="box">
+            <div class="box-title">RESUMO DO PEDIDO</div>
+            <div class="placeholder-linha w60"></div>
+            <div class="placeholder-linha w40"></div>
+            <div class="placeholder-linha w40"></div>
+            <div class="placeholder-linha w60" style="background:#333;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="prancha">
+  <h2>5. Catálogo de Produtos (produtos.html) — Gerente</h2>
+  <div class="wf">
+    <div class="wf-header"><span>GALERA DA CANECA</span><span>NAV</span><span>USUÁRIO</span></div>
+    <div class="wf-main">
+      <div class="row"><div class="placeholder-linha w40"></div><div class="btn" style="width:120px;">+ NOVO PRODUTO</div></div>
+      <table class="tabela-wf">
+        <tr><th>ID</th><th>Nome</th><th>Categoria</th><th>Preço</th><th>Estoque</th><th>Ações</th></tr>
+        <tr><td>▢</td><td>▢▢▢▢</td><td>▢▢</td><td>▢▢</td><td>▢▢</td><td>Editar / Excluir</td></tr>
+        <tr><td>▢</td><td>▢▢▢▢</td><td>▢▢</td><td>▢▢</td><td>▢▢</td><td>Editar / Excluir</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="prancha">
+  <h2>6. Novo Produto (produto-form.html) — Gerente</h2>
+  <div class="wf" style="max-width:500px;">
+    <div class="wf-header"><span>GALERA DA CANECA</span><span>NAV</span></div>
+    <div class="wf-main">
+      <div class="campo-wf"><label>NOME DO PRODUTO</label><div class="input"></div></div>
+      <div class="campo-wf"><label>CATEGORIA (SELECT)</label><div class="input"></div></div>
+      <div class="row">
+        <div class="campo-wf"><label>PREÇO</label><div class="input"></div></div>
+        <div class="campo-wf"><label>ESTOQUE</label><div class="input"></div></div>
+      </div>
+      <div class="btn">SALVAR</div>
+    </div>
+  </div>
+</div>
+
+<div class="prancha">
+  <h2>7. Funcionários Cadastrados (vendedores.html) — Gerente</h2>
+  <div class="wf">
+    <div class="wf-header"><span>GALERA DA CANECA</span><span>NAV</span><span>USUÁRIO</span></div>
+    <div class="wf-main">
+      <div class="row"><div class="placeholder-linha w40"></div><div class="btn" style="width:150px;">+ NOVO FUNCIONÁRIO</div></div>
+      <table class="tabela-wf">
+        <tr><th>ID</th><th>Nome</th><th>CPF</th><th>Email</th><th>Telefone</th><th>Cargo</th><th>Ações</th></tr>
+        <tr><td>▢</td><td>▢▢▢▢</td><td>▢▢</td><td>▢▢▢</td><td>▢▢</td><td>Gerente</td><td>Editar/Excluir</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="prancha">
+  <h2>8. Novo Funcionário (vendedor-form.html) — Gerente</h2>
+  <div class="wf" style="max-width:500px;">
+    <div class="wf-header"><span>GALERA DA CANECA</span><span>NAV</span></div>
+    <div class="wf-main">
+      <div class="box-title">DADOS PESSOAIS</div>
+      <div class="campo-wf"><label>NOME COMPLETO</label><div class="input"></div></div>
+      <div class="row">
+        <div class="campo-wf"><label>CPF</label><div class="input"></div></div>
+        <div class="campo-wf"><label>DATA NASCIMENTO</label><div class="input"></div></div>
+      </div>
+      <div class="row">
+        <div class="campo-wf"><label>TELEFONE</label><div class="input"></div></div>
+        <div class="campo-wf"><label>EMAIL</label><div class="input"></div></div>
+      </div>
+      <div class="box-title">ACESSO AO SISTEMA</div>
+      <div class="campo-wf"><label>SENHA</label><div class="input"></div></div>
+      <div class="campo-wf">☐ ESTE FUNCIONÁRIO É GERENTE</div>
+      <div class="btn">SALVAR</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

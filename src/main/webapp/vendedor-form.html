@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galera da Caneca — Novo Funcionário</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+<div class="pagina">
+  <header class="cabecalho">
+    <div class="cabecalho__barra">
+      <div class="marca">
+        <svg width="30" height="30" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="52" height="52" rx="12" fill="#C1832F"/>
+          <path d="M15 16h16v18a3 3 0 0 1-3 3H18a3 3 0 0 1-3-3V16Z" stroke="#22303A" stroke-width="2.2" stroke-linejoin="round"/>
+          <path d="M31 21h3a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-3" stroke="#22303A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Galera da Caneca<span class="marca__linha2">Sistema de Vendas</span></span>
+      </div>
+      <nav class="nav-principal">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="vendas.html">Vendas</a>
+        <a href="clientes.html">Clientes</a>
+        <a href="produtos.html" class="somente-gerente">Produtos</a>
+        <a href="vendedores.html" class="ativo somente-gerente">Funcionários</a>
+      </nav>
+      <div class="cabecalho__usuario">
+        <span class="crachá"><span class="crachá__ponto"></span><span data-usuario-nome></span> · <span data-usuario-perfil></span></span>
+        <button class="btn-sair" data-acao="sair" type="button">Sair</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="miolo">
+    <div class="container">
+      <p class="trilha"><a href="vendedores.html">Funcionários</a> / Novo funcionário</p>
+      <div class="cabecalho-secao">
+        <h1 data-titulo-form>Novo Funcionário</h1>
+      </div>
+
+      <form id="form-vendedor" class="form-caixa" novalidate>
+        <input type="hidden" id="vendedorId">
+
+        <fieldset>
+          <legend>Dados pessoais</legend>
+
+          <div class="campo">
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" name="nome" placeholder="Nome completo do funcionário" required>
+            <span class="mensagem-erro"></span>
+          </div>
+
+          <div class="linha-campos">
+            <div class="campo">
+              <label for="cpf">CPF</label>
+              <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14" required>
+              <span class="mensagem-erro"></span>
+            </div>
+            <div class="campo">
+              <label for="dataNascimento">Data de Nascimento</label>
+              <input type="date" id="dataNascimento" name="dataNascimento">
+            </div>
+          </div>
+
+          <div class="linha-campos">
+            <div class="campo">
+              <label for="sexo">Sexo</label>
+              <select id="sexo" name="sexo">
+                <option value="">Não informar</option>
+                <option value="M">Masculino</option>
+                <option value="F">Feminino</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="[email protected]" required>
+              <span class="mensagem-erro"></span>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Acesso ao sistema</legend>
+
+          <div class="campo">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" placeholder="Senha de acesso" required>
+            <span class="mensagem-erro"></span>
+          </div>
+
+          <div class="campo campo-checkbox">
+            <input type="checkbox" id="isGerente" name="isGerente">
+            <label for="isGerente" style="margin-bottom:0;">Este funcionário é gerente</label>
+          </div>
+          <p class="dica">Gerentes têm acesso ao cadastro de produtos, funcionários e a todas as vendas da equipe.</p>
+        </fieldset>
+
+        <div class="acoes-form">
+          <button type="submit" class="btn btn--primario">Salvar</button>
+          <a href="vendedores.html" class="btn btn--secundario">Cancelar</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="rodape">Galera da Caneca &copy; 2026 — Projeto acadêmico, front-end sem conexão com banco de dados.</footer>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/utilitarios.js"></script>
+<script src="js/cabecalho.js"></script>
+<script src="js/vendedores.js"></script>
+<script>inicializarFormularioVendedor();</script>
+</body>
+</html>
