@@ -1,8 +1,6 @@
 # Evidências de Testes — Etapa 9 (Galera da Caneca)
 
-## 1. Testes automatizados (JUnit 5)
-
-O projeto já trazia, da Etapa 7, os seguintes testes automatizados, mantidos e
+## 1. Testes automatizados (JUnit 5)O projeto já trazia, da Etapa 7, os seguintes testes automatizados, mantidos e
 válidos após a integração web:
 
 | Classe | Testes | O que verifica |
@@ -18,6 +16,12 @@ aqui):**
 ```
 mvn test
 ```
+
+> 📌 **Bônus:** o projeto também traz `main/Principal.java`, um smoke-test
+> manual (das etapas anteriores) que roda 8 verificações de ponta a ponta
+> contra o banco real (listagens + regras de validação). Rodar essa classe
+> (botão direito → Run File no NetBeans) com o MySQL ligado é mais uma boa
+> evidência para anexar — ela imprime `[OK]`/`[FALHOU]` para cada teste.
 
 > 📌 **Ação para você:** rode o comando acima no NetBeans (ou terminal) e cole
 > aqui o resultado (ou um print do painel de testes do NetBeans, que mostra ✅
