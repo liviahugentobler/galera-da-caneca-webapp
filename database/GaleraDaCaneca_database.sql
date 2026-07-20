@@ -8,10 +8,10 @@ CREATE TABLE clientes(
 	id_clientes INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     nome_completo VARCHAR(100) NOT NULL,
     nascimento DATE NOT NULL,
-    telefone INT NOT NULL,
+    telefone VARCHAR(15) NOT NULL,
     email VARCHAR(45) NOT NULL UNIQUE,
-    senha INT NOT NULL UNIQUE,
-    cpf INT NOT NULL UNIQUE, 
+    senha VARCHAR(30) NOT NULL,
+    cpf VARCHAR(11) NOT NULL UNIQUE, 
     endereco VARCHAR(45) NOT NULL,
     sexo VARCHAR(2) NOT NULL
 );
@@ -19,10 +19,10 @@ CREATE TABLE clientes(
 CREATE TABLE vendedores(
 	id_vendedores INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     nome_completo VARCHAR(100) NOT NULL,
-    cpf INT NOT NULL UNIQUE, 
+    cpf VARCHAR(11) NOT NULL UNIQUE, 
     nascimento DATE NOT NULL, 
     email VARCHAR(45) NOT NULL UNIQUE,
-    senha INT NOT NULL UNIQUE,
+    senha VARCHAR(30) NOT NULL,
     sexo CHAR(1),
     id_cargo INT 
 );
@@ -48,6 +48,7 @@ CREATE TABLE vendas(
     id_cliente INT, 
     valor_total DECIMAL(10,2),
     quantidade INT DEFAULT 1,
+    data_venda DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_vendedores) REFERENCES vendedores(id_vendedores),
     FOREIGN KEY (id_produto) REFERENCES produtos(id_produto),
     FOREIGN KEY (id_cliente) REFERENCES clientes(id_clientes)

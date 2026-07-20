@@ -21,6 +21,18 @@ ALTER TABLE vendedores MODIFY senha VARCHAR(30) NOT NULL;
 ALTER TABLE clientes DROP INDEX senha;
 ALTER TABLE clientes MODIFY senha VARCHAR(30) NOT NULL;
 
+-- BUG-07: colunas "cpf" (vendedores/clientes) e "telefone" (clientes)
+-- criadas como INT. CPF e telefone não são números para fins de
+-- cálculo (têm zeros à esquerda e, no caso do CPF mascarado pelo
+-- front-end, pontuação). As entidades JPA já mapeiam ambos os campos
+-- como String — o INT no banco causaria erro ao inserir.
+ALTER TABLE vendedores DROP INDEX cpf;
+ALTER TABLE vendedores MODIFY cpf VARCHAR(11) NOT NULL UNIQUE;
+
+ALTER TABLE clientes DROP INDEX cpf;
+ALTER TABLE clientes MODIFY cpf VARCHAR(11) NOT NULL UNIQUE;
+ALTER TABLE clientes MODIFY telefone VARCHAR(15) NOT NULL;
+
 -- BUG-02: a tabela "vendas" não guardava a quantidade de itens
 -- vendidos, apenas o valor_total. Sem essa informação não é possível
 -- reexibir o cálculo de desconto (CalculadoraDeVenda) nem validar

@@ -2,6 +2,7 @@ package br.com.galeradacaneca.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 /**
  * Entidade Venda.
@@ -34,6 +35,9 @@ public class Venda {
 
     @Column(name = "quantidade")
     private Integer quantidade;
+
+    @Column(name = "data_venda", insertable = false, updatable = false)
+    private LocalDateTime dataVenda;
 
     @Column(name = "data_venda")
     private java.time.LocalDateTime dataVenda;

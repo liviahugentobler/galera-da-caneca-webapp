@@ -57,13 +57,17 @@ evidência de teste pedida na entrega.**
 
 Além dos testes acima (a serem executados por você), a integração desta etapa
 passou por uma checagem manual de compatibilidade entre as camadas, descrita
-no documento `BUGTRACKING.md`. Essa checagem já identificou e corrigiu 6
-inconsistências entre o front-end (Etapa 8) e o modelo de dados do back-end
-(Etapa 6) antes mesmo da primeira execução — ver detalhes lá.
+no documento `evidencias/bugtracking.md`. Essa checagem identificou e corrigiu
+10 inconsistências entre o front-end (Etapa 8), as entidades JPA (Etapa 6) e o
+schema do banco de dados antes mesmo da primeira execução — incluindo bugs
+bloqueantes como colunas `senha`, `cpf` e `telefone` criadas como `INT` no
+banco (incompatíveis com os tipos `String` das entidades). Ver detalhes lá.
 
-## 4. Limitação conhecida (documentar na entrega)
+## 4. Observações para quem for executar os testes
 
-A entidade `Venda` do banco de dados fornecido não possui uma coluna de
-data/hora da venda. Por isso, as telas não exibem "data da venda" — apenas
-cliente, produto, quantidade, desconto e vendedor. Sugerimos, como melhoria
-futura, adicionar uma coluna `data_hora DATETIME DEFAULT CURRENT_TIMESTAMP`.
+- Antes de rodar o projeto pela primeira vez, execute
+  `database/GaleraDaCaneca_database.sql` (banco novo) **ou**
+  `database/ajustes_etapa9.sql` (se o banco das etapas anteriores já existir).
+- A venda agora registra `data_venda` automaticamente (preenchida pelo
+  próprio MySQL via `DEFAULT CURRENT_TIMESTAMP`), então a listagem de vendas
+  volta a exibir a coluna "Data" que aparecia nos wireframes originais.

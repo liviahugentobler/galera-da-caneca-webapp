@@ -36,12 +36,13 @@ async function inicializarListaVendas() {
       if (contador) contador.textContent = `${lista.length} venda(s)`;
 
       if (lista.length === 0) {
-        corpoTabela.innerHTML = `<tr><td colspan="7"><div class="estado-vazio"><h3>Nenhuma venda encontrada</h3><p>Ajuste os filtros ou registre uma nova venda.</p></div></td></tr>`;
+        corpoTabela.innerHTML = `<tr><td colspan="8"><div class="estado-vazio"><h3>Nenhuma venda encontrada</h3><p>Ajuste os filtros ou registre uma nova venda.</p></div></td></tr>`;
         return;
       }
 
       corpoTabela.innerHTML = lista.map((v) => `
         <tr>
+          <td>${Util.formatarDataHora(v.dataVenda)}</td>
           <td>${v.clienteNome || '—'}</td>
           <td>${v.produtoNome || 'Produto removido'}</td>
           <td class="numerico">${v.quantidade ?? '—'}</td>

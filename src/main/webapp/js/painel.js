@@ -22,10 +22,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const corpoTabela = document.querySelector('#tabela-ultimas-vendas tbody');
     if (corpoTabela) {
       if (!dados.ultimasVendas || dados.ultimasVendas.length === 0) {
-        corpoTabela.innerHTML = '<tr><td colspan="4">Nenhuma venda registrada ainda.</td></tr>';
+        corpoTabela.innerHTML = '<tr><td colspan="5">Nenhuma venda registrada ainda.</td></tr>';
       } else {
         corpoTabela.innerHTML = dados.ultimasVendas.map((v) => `
           <tr>
+            <td>${Util.formatarDataHora(v.dataVenda)}</td>
             <td>${v.clienteNome || '—'}</td>
             <td>${v.produtoNome || 'Produto removido'}</td>
             <td class="numerico">${v.quantidade ?? '—'}</td>

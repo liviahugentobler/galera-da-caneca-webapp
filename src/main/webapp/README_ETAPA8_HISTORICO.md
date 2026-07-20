@@ -1,3 +1,8 @@
+> ⚠️ **Este documento é histórico (Etapa 8).** Desde a Etapa 9, o front-end está
+> integrado ao back-end via API REST — ele não usa mais `localStorage`.
+> Veja o `README.md` na raiz do projeto para as instruções atuais.
+>
+
 # Galera da Caneca — Front-end Web (Etapa 8)
 
 Front-end estático (HTML + CSS + JS) do sistema de vendas **Galera da Caneca**,

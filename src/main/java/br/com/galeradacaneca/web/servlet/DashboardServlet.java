@@ -67,6 +67,7 @@ public class DashboardServlet extends HttpServlet {
                     .map(v -> {
                         Map<String, Object> m = new LinkedHashMap<>();
                         m.put("id", v.getId());
+                        m.put("dataVenda", v.getDataVenda());
                         m.put("clienteNome", v.getCliente() == null ? null : v.getCliente().getNomeCompleto());
                         m.put("produtoNome", v.getProduto() == null ? null : v.getProduto().getNomeProd());
                         m.put("quantidade", v.getQuantidade());

@@ -88,6 +88,52 @@ Status**.
   se o professor validar a necessidade).
 - **Status:** ✅ Corrigido (removido) — melhoria futura documentada
 
+### BUG-07 — Colunas `cpf` e `telefone` criadas como `INT`
+- **Severidade:** Alta
+- **Onde:** `database/GaleraDaCaneca_database.sql` (tabelas `vendedores` e `clientes`)
+- **Descrição:** CPF e telefone não são números para fins de cálculo (têm
+  zeros à esquerda; o CPF, além disso, é exibido mascarado pelo front-end,
+  ex. `123.456.789-00`). As entidades JPA já mapeavam ambos como `String`,
+  então inserir esses valores no banco causaria erro de tipo.
+- **Como foi encontrado:** Conferência cruzada entre o schema SQL e as
+  anotações `@Column` das entidades `Cliente`/`Vendedor` antes de validar o
+  fluxo de cadastro.
+- **Correção:** `database/ajustes_etapa9.sql` altera `cpf` para
+  `VARCHAR(11)` (vendedores e clientes) e `telefone` para `VARCHAR(15)`
+  (clientes). O schema novo (`GaleraDaCaneca_database.sql`) já nasce
+  corrigido para quem for criar o banco do zero.
+- **Status:** ✅ Corrigido
+
+### BUG-08 — `VendaService` não expunha exclusão de venda
+- **Severidade:** Alta
+- **Onde:** `service/VendaService.java`
+- **Descrição:** A interface não tinha um método `excluir`, impossibilitando
+  implementar o botão "Excluir" na tela de vendas, apesar de o DAO já dar
+  suporte à operação via `GenericDAO`.
+- **Correção:** Adicionado `void excluir(int id)` em `VendaService` e
+  `VendaServiceImpl`, delegando ao `VendaDAO`.
+- **Status:** ✅ Corrigido
+
+### BUG-09 — Exclusão de venda quebraria por restrição de chave estrangeira
+- **Severidade:** Alta
+- **Onde:** `web/servlet/VendaServlet.java`
+- **Descrição:** A tabela `pagamentos` referencia `vendas` sem
+  `ON DELETE CASCADE`. Excluir uma venda com pagamento associado geraria
+  erro de integridade referencial no MySQL.
+- **Correção:** `VendaServlet.doDelete` agora localiza e exclui o
+  `Pagamento` associado **antes** de excluir a `Venda`, além de devolver a
+  quantidade ao estoque do produto.
+- **Status:** ✅ Corrigido
+
+### BUG-10 — Campo "telefone" inexistente na entidade Vendedor
+- **Severidade:** Baixa
+- **Onde:** front-end (Etapa 8), `vendedor-form.html`
+- **Descrição:** O formulário de funcionário pedia telefone, mas a entidade
+  `Vendedor` não tem essa coluna (só `Cliente` tem).
+- **Correção:** Campo removido de `vendedor-form.html`; adicionado em seu
+  lugar o campo "Sexo" (M/F), que a entidade de fato possui.
+- **Status:** ✅ Corrigido
+
 ---
 
 ## Como usar este documento na entrega

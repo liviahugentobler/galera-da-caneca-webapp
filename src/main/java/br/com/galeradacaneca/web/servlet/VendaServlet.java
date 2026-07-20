@@ -166,6 +166,7 @@ public class VendaServlet extends HttpServlet {
         m.put("vendedorNome", v.getVendedor() == null ? null : v.getVendedor().getNomeCompleto());
         m.put("quantidade", v.getQuantidade());
         m.put("valorTotal", v.getValorTotal());
+        m.put("dataVenda", v.getDataVenda());
 
         if (v.getProduto() != null && v.getProduto().getPreco() != null && v.getQuantidade() != null) {
             BigDecimal subtotal = calculadora.calcularSubtotal(v.getProduto().getPreco(), v.getQuantidade());
