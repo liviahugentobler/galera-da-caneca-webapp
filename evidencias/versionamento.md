@@ -13,6 +13,7 @@ Histórico atual (rode `git log --oneline` dentro da pasta do projeto para
 conferir):
 
 ```
+c48c700 fix: corrige tipos incompativeis no schema (senha, cpf, telefone) e adiciona data_venda; docs finais de versionamento
 ee10c64 docs: adiciona documento de evidencias de teste, bugtracking e wireframes da entrega final
 be86f92 fix: adiciona quantidade em Venda, camada de Pagamento e exclusao de venda (ver bugtracking)
 5a867d7 feat(frontend): integra front-end da Etapa 8 ao projeto web (webapp)
