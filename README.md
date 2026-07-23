@@ -31,8 +31,7 @@ front-end via `fetch`.
 - [API REST](#api-rest)
 - [Regra de negócio: desconto por quantidade](#regra-de-negócio-desconto-por-quantidade)
 - [Testes automatizados](#testes-automatizados)
-- [Bugtracking](#bugtracking)
-- [Versionamento](#versionamento)
+
 
 ---
 
