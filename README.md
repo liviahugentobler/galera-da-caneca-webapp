@@ -14,9 +14,7 @@ Jakarta EE, com uma **API REST** própria (`Servlets` + `Gson`) consumida pelo
 front-end via `fetch`.
 
 > ⚠️ O front-end não usa mais dados simulados em `localStorage`. Todas as
-> telas consomem a API REST descrita neste documento. O README anterior,
-> específico da Etapa 8, foi mantido como histórico em
-> `src/main/webapp/README_ETAPA8_HISTORICO.md`.
+> telas consomem a API REST descrita neste documento. 
 
 ---
 
