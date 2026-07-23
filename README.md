@@ -198,7 +198,7 @@ Para facilitar a validação da aplicação, os usuários abaixo devem estar cad
 | Nome | Perfil |  Permissões |
 |---|---|---|
 | Renata Borges | Gerente | Acesso completo: produtos, funcionários, clientes, vendas e painel. |
-| Lucas Ribeiro | Vendedor(a) | lucas.ribeiro@email.com | 583920 | Acesso a clientes e vendas; sem acesso a produtos e funcionários. |
+| Lucas Ribeiro | Vendedor(a) | Acesso a clientes e vendas; sem acesso a produtos e funcionários. |
 
 ### Usuários de demonstração
 
