@@ -14,10 +14,6 @@ import java.util.Optional;
  * SOLID — DIP: depende da abstração VendedorDAO.
  *
  * Padrão de Projeto — Facade.
- *
- * Refatorações aplicadas:
- *   - Validações extraídas das views Swing.
- *   - autenticar() retorna Optional (elimina null return — code smell).
  */
 public class VendedorServiceImpl implements VendedorService {
 
@@ -37,6 +33,7 @@ public class VendedorServiceImpl implements VendedorService {
     public void atualizar(Vendedor vendedor) {
         if (vendedor.getId() == null)
             throw new IllegalArgumentException("ID do vendedor não pode ser nulo para atualização.");
+
         validar(vendedor);
         vendedorDAO.atualizar(vendedor);
     }
@@ -58,14 +55,19 @@ public class VendedorServiceImpl implements VendedorService {
 
     @Override
     public List<Vendedor> pesquisarPorNome(String nome) {
-        if (nome == null || nome.isBlank()) return listarTodos();
+        if (nome == null || nome.isBlank()) {
+            return listarTodos();
+        }
         return vendedorDAO.pesquisarPorNome(nome);
     }
 
     @Override
     public Optional<Vendedor> autenticar(String email, String senha) {
-        if (email == null || email.isBlank() || senha == null || senha.isBlank())
+        if (email == null || email.isBlank() ||
+            senha == null || senha.isBlank()) {
             return Optional.empty();
+        }
+
         return vendedorDAO.autenticar(email, senha);
     }
 
@@ -73,6 +75,7 @@ public class VendedorServiceImpl implements VendedorService {
     public void alterarSenha(int idVendedor, String novaSenha) {
         if (novaSenha == null || novaSenha.length() < 4)
             throw new IllegalArgumentException("A nova senha deve ter pelo menos 4 caracteres.");
+
         vendedorDAO.alterarSenha(idVendedor, novaSenha);
     }
 
@@ -81,17 +84,32 @@ public class VendedorServiceImpl implements VendedorService {
         return vendedorDAO.totalVendasPorVendedor(idVendedor);
     }
 
+    private String limparCpf(String cpf) {
+        return cpf == null ? null : cpf.replaceAll("\\D", "");
+    }
+
     private void validar(Vendedor v) {
+
         if (v.getNomeCompleto() == null || v.getNomeCompleto().isBlank())
             throw new IllegalArgumentException("Nome completo é obrigatório.");
-        if (v.getCpf() == null || !v.getCpf().matches("\\d{11}"))
+
+        if (v.getCpf() == null || v.getCpf().isBlank())
+            throw new IllegalArgumentException("CPF é obrigatório.");
+        String cpf = limparCpf(v.getCpf());
+
+        if (!cpf.matches("\\d{11}"))
             throw new IllegalArgumentException("CPF deve conter 11 dígitos numéricos.");
+        v.setCpf(cpf);
+
         if (v.getEmail() == null || !v.getEmail().contains("@"))
             throw new IllegalArgumentException("E-mail inválido.");
+
         if (v.getNascimento() == null)
             throw new IllegalArgumentException("Data de nascimento é obrigatória.");
+
         if (v.getSenha() == null || v.getSenha().isBlank())
             throw new IllegalArgumentException("Senha é obrigatória.");
+
         if (v.getCargo() == null)
             throw new IllegalArgumentException("Cargo é obrigatório.");
     }

@@ -1,6 +1,6 @@
 package br.com.galeradacaneca.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -39,8 +39,6 @@ public class Venda {
     @Column(name = "data_venda", insertable = false, updatable = false)
     private LocalDateTime dataVenda;
 
-    @Column(name = "data_venda")
-    private java.time.LocalDateTime dataVenda;
 
     public Venda() {}
 

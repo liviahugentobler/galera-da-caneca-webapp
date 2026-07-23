@@ -43,7 +43,7 @@ ALTER TABLE vendas ADD COLUMN quantidade INT NOT NULL DEFAULT 1;
 -- impedindo qualquer ordenação cronológica ou filtro por período
 -- nas telas de listagem.
 ALTER TABLE vendas ADD COLUMN data_venda DATETIME DEFAULT CURRENT_TIMESTAMP;
-UPDATE vendas SET data_venda = CURRENT_TIMESTAMP WHERE data_venda IS NULL;
+
 
 -- BUG-04: nenhuma venda de exemplo tinha uma quantidade > 1,
 -- o que nunca exercitava a faixa de desconto de 5%/10% da

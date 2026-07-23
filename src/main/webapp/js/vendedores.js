@@ -12,7 +12,8 @@ async function inicializarListaVendedores() {
 
   async function renderizar() {
     try {
-      const lista = await GC.vendedores.listar(campoBusca?.value || '');
+      const termoBusca = campoBusca ? campoBusca.value : '';
+      const lista = await GC.vendedores.listar(termoBusca || '');
       if (contador) contador.textContent = `${lista.length} funcionário(s)`;
 
       if (lista.length === 0) {
@@ -52,7 +53,7 @@ async function inicializarListaVendedores() {
     }
   }
 
-  campoBusca?.addEventListener('input', renderizar);
+  if (campoBusca) campoBusca.addEventListener('input', renderizar);
   renderizar();
 }
 
@@ -111,6 +112,7 @@ async function inicializarFormularioVendedor() {
     if (!valido) return;
 
     try {
+      const senhaDigitada = campoSenha.value.trim();
       await GC.vendedores.salvar({
         id: campoId.value ? Number(campoId.value) : null,
         nomeCompleto: campoNome.value.trim(),
@@ -118,7 +120,7 @@ async function inicializarFormularioVendedor() {
         nascimento: campoNascimento.value || null,
         sexo: campoSexo ? campoSexo.value : null,
         email: campoEmail.value.trim(),
-        senha: campoSenha.value.trim() || undefined,
+        senha: senhaDigitada ? senhaDigitada : undefined,
         isGerente: campoGerente.checked,
       });
       Util.exibirToast('Funcionário salvo com sucesso.', 'sucesso');

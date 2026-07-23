@@ -30,7 +30,6 @@ public class ClienteServiceImpl implements ClienteService {
 
     private final ClienteDAO clienteDAO;
 
-    /** Injeção de dependência por construtor. */
     public ClienteServiceImpl(ClienteDAO clienteDAO) {
         this.clienteDAO = clienteDAO;
     }
@@ -76,15 +75,21 @@ public class ClienteServiceImpl implements ClienteService {
         return clienteDAO.buscarPorCpf(cpf);
     }
 
-    // ── Validações de negócio ─────────────────────────────────────────────────
+    private String limparCpf(String cpf) {
+        return cpf == null ? null : cpf.replaceAll("\\D", "");
+    }
 
     private void validar(Cliente c) {
         if (c.getNomeCompleto() == null || c.getNomeCompleto().isBlank())
             throw new IllegalArgumentException("Nome completo é obrigatório.");
         if (c.getCpf() == null || c.getCpf().isBlank())
             throw new IllegalArgumentException("CPF é obrigatório.");
-        if (!c.getCpf().matches("\\d{11}"))
+        String cpf = limparCpf(c.getCpf());
+
+        if (!cpf.matches("\\d{11}"))
             throw new IllegalArgumentException("CPF deve conter 11 dígitos numéricos.");
+        c.setCpf(cpf);
+
         if (c.getEmail() == null || c.getEmail().isBlank())
             throw new IllegalArgumentException("E-mail é obrigatório.");
         if (!c.getEmail().contains("@"))

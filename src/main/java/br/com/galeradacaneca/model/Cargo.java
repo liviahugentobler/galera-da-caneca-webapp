@@ -1,6 +1,6 @@
 package br.com.galeradacaneca.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 /**
  * Entidade Cargo — representa o cargo de um vendedor (ex.: Vendedor, Gerente).

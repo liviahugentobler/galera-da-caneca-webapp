@@ -42,7 +42,8 @@ const Util = {
 
   marcarInvalido(input, mensagem) {
     input.classList.add('invalido');
-    const erro = input.closest('.campo')?.querySelector('.mensagem-erro');
+    const campoPai = input.closest('.campo');
+    const erro = campoPai ? campoPai.querySelector('.mensagem-erro') : null;
     if (erro) {
       erro.textContent = mensagem;
       erro.classList.add('visivel');
@@ -51,7 +52,8 @@ const Util = {
 
   limparInvalido(input) {
     input.classList.remove('invalido');
-    const erro = input.closest('.campo')?.querySelector('.mensagem-erro');
+    const campoPai = input.closest('.campo');
+    const erro = campoPai ? campoPai.querySelector('.mensagem-erro') : null;
     if (erro) erro.classList.remove('visivel');
   },
 

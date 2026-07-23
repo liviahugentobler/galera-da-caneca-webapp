@@ -25,9 +25,10 @@ async function inicializarListaVendas() {
 
   async function renderizar() {
     try {
-      const filtros = { cliente: campoBusca?.value || '' };
+      const termoCliente = campoBusca ? campoBusca.value : '';
+      const filtros = { cliente: termoCliente || '' };
       if (sessao.isGerente) {
-        if (filtroVendedor?.value) filtros.vendedorId = filtroVendedor.value;
+        if (filtroVendedor && filtroVendedor.value) filtros.vendedorId = filtroVendedor.value;
       } else {
         filtros.vendedorId = sessao.id;
       }
@@ -40,13 +41,16 @@ async function inicializarListaVendas() {
         return;
       }
 
-      corpoTabela.innerHTML = lista.map((v) => `
+      corpoTabela.innerHTML = lista.map((v) => {
+        const quantidadeExibida = (v.quantidade !== null && v.quantidade !== undefined) ? v.quantidade : '—';
+        const descontoExibido = (v.percentualDesconto !== null && v.percentualDesconto !== undefined) ? v.percentualDesconto : 0;
+        return `
         <tr>
           <td>${Util.formatarDataHora(v.dataVenda)}</td>
           <td>${v.clienteNome || '—'}</td>
           <td>${v.produtoNome || 'Produto removido'}</td>
-          <td class="numerico">${v.quantidade ?? '—'}</td>
-          <td class="numerico">${v.percentualDesconto ?? 0}%</td>
+          <td class="numerico">${quantidadeExibida}</td>
+          <td class="numerico">${descontoExibido}%</td>
           <td class="numerico">${Util.formatarMoeda(v.valorTotal || 0)}</td>
           <td>${v.vendedorNome || '—'}</td>
           <td>
@@ -54,7 +58,8 @@ async function inicializarListaVendas() {
               <button class="btn btn--perigo btn--pequeno" data-excluir="${v.id}" type="button">Excluir</button>
             </div>
           </td>
-        </tr>`).join('');
+        </tr>`;
+      }).join('');
 
       corpoTabela.querySelectorAll('[data-excluir]').forEach((botao) => {
         botao.addEventListener('click', async () => {
@@ -73,8 +78,8 @@ async function inicializarListaVendas() {
     }
   }
 
-  campoBusca?.addEventListener('input', renderizar);
-  filtroVendedor?.addEventListener('change', renderizar);
+  if (campoBusca) campoBusca.addEventListener('input', renderizar);
+  if (filtroVendedor) filtroVendedor.addEventListener('change', renderizar);
   renderizar();
 }
 

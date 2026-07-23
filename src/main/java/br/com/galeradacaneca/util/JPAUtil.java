@@ -1,8 +1,8 @@
 package br.com.galeradacaneca.util;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 /**
  * Utilitário JPA — mantém uma única instância de EntityManagerFactory (Singleton).
@@ -27,8 +27,16 @@ public class JPAUtil {
 
     public static synchronized EntityManagerFactory getFactory() {
         if (factory == null || !factory.isOpen()) {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+            } catch (ClassNotFoundException e) {
+                throw new IllegalStateException(
+                    "Driver MySQL não encontrado. Verifique o mysql-connector-j no WAR.", e);
+            }
+
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);
         }
+
         return factory;
     }
 

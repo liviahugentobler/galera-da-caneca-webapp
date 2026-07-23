@@ -12,7 +12,8 @@ async function inicializarListaClientes() {
 
   async function renderizar() {
     try {
-      const lista = await GC.clientes.listar(campoBusca?.value || '');
+      const termoBusca = campoBusca ? campoBusca.value : '';
+      const lista = await GC.clientes.listar(termoBusca || '');
       if (contador) contador.textContent = `${lista.length} cliente(s)`;
 
       if (lista.length === 0) {
@@ -52,7 +53,7 @@ async function inicializarListaClientes() {
     }
   }
 
-  campoBusca?.addEventListener('input', renderizar);
+  if (campoBusca) campoBusca.addEventListener('input', renderizar);
   renderizar();
 }
 
@@ -80,7 +81,7 @@ async function inicializarFormularioCliente() {
     try {
       const cliente = await GC.clientes.buscarPorId(idParam);
       titulo.textContent = 'Editar Cliente';
-      campoId.value = cliente.id;
+      if (campoId) campoId.value = cliente.id;
       campoNome.value = cliente.nomeCompleto;
       campoCPF.value = cliente.cpf;
       campoNascimento.value = cliente.nascimento || '';
@@ -111,16 +112,20 @@ async function inicializarFormularioCliente() {
     if (!valido) return;
 
     try {
+      const senhaDigitada = campoSenha.value.trim();
+      const idCliente = campoId && campoId.value ? Number(campoId.value) : null;
+      const cpfLimpo = campoCPF.value.replace(/\D/g, '');
+
       await GC.clientes.salvar({
-        id: campoId.value ? Number(campoId.value) : null,
+        id: idCliente,
         nomeCompleto: campoNome.value.trim(),
-        cpf: campoCPF.value.trim(),
+        cpf: cpfLimpo,
         nascimento: campoNascimento.value || null,
         telefone: campoTelefone.value.trim(),
         sexo: campoSexo.value,
         email: campoEmail.value.trim(),
         endereco: campoEndereco.value.trim(),
-        senha: campoSenha.value.trim() || undefined,
+        senha: senhaDigitada ? senhaDigitada : undefined,
       });
       Util.exibirToast('Cliente salvo com sucesso.', 'sucesso');
       window.location.href = 'clientes.html';

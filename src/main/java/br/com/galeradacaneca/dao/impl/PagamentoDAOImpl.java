@@ -4,7 +4,7 @@ import br.com.galeradacaneca.dao.PagamentoDAO;
 import br.com.galeradacaneca.model.Pagamento;
 import br.com.galeradacaneca.util.JPAUtil;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 

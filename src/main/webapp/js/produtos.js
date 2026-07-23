@@ -12,7 +12,8 @@ async function inicializarListaProdutos() {
 
   async function renderizar() {
     try {
-      const lista = await GC.produtos.listar(campoBusca?.value || '');
+      const termoBusca = campoBusca ? campoBusca.value : '';
+      const lista = await GC.produtos.listar(termoBusca || '');
       if (contador) contador.textContent = `${lista.length} produto(s)`;
 
       if (lista.length === 0) {
@@ -53,7 +54,7 @@ async function inicializarListaProdutos() {
     }
   }
 
-  campoBusca?.addEventListener('input', renderizar);
+  if (campoBusca) campoBusca.addEventListener('input', renderizar);
   renderizar();
 }
 

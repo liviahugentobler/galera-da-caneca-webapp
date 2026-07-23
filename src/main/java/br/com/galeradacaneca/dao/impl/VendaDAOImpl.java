@@ -4,7 +4,7 @@ import br.com.galeradacaneca.dao.VendaDAO;
 import br.com.galeradacaneca.model.Venda;
 import br.com.galeradacaneca.util.JPAUtil;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;

@@ -5,8 +5,8 @@ import br.com.galeradacaneca.model.Venda;
 import br.com.galeradacaneca.model.Vendedor;
 import br.com.galeradacaneca.util.JPAUtil;
 
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import java.util.List;
 import java.util.Optional;
 
